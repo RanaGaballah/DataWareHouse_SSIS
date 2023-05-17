@@ -1,0 +1,1207 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/15/2023 1:02:25 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-HREK7MN"
+  DTS:CreatorName="DESKTOP-HREK7MN\M"
+  DTS:DTSID="{125965C9-90BD-4D1B-9077-C93B597D26AC}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5035.3"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{F031DBBF-685E-41C2-BE75-99444B12A1AD}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-HREK7MN.ASS3DB_DW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{F29007BE-5E5D-4EDA-A05F-6B763EF2E141}"
+      DTS:ObjectName="DESKTOP-HREK7MN.ASS3DB_DW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-HREK7MN;Initial Catalog=ASS3DB_DW;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{F29007BE-5E5D-4EDA-A05F-6B763EF2E141}DESKTOP-HREK7MN.ASS3DB_DW;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{CA9D6F37-6704-4A45-AA1F-A9615C32CB52}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\Product Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Product Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Product_Q1]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Product Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-HREK7MN.ASS3DB_DW]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-HREK7MN.ASS3DB_DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Product Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Product Destination.Inputs[OLE DB Destination Input].Columns[id]"
+                      cachedDataType="i8"
+                      cachedName="id"
+                      externalMetadataColumnId="Package\Data Flow Task\Product Destination.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      lineageId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].Columns[id]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Product Destination.Inputs[OLE DB Destination Input].Columns[title]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="152"
+                      cachedName="title"
+                      externalMetadataColumnId="Package\Data Flow Task\Product Destination.Inputs[OLE DB Destination Input].ExternalColumns[title]"
+                      lineageId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].Columns[title]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Product Destination.Inputs[OLE DB Destination Input].Columns[price]"
+                      cachedDataType="i8"
+                      cachedName="price"
+                      externalMetadataColumnId="Package\Data Flow Task\Product Destination.Inputs[OLE DB Destination Input].ExternalColumns[price]"
+                      lineageId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].Columns[price]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Product Destination.Inputs[OLE DB Destination Input].Columns[discountPercentage]"
+                      cachedDataType="r8"
+                      cachedName="discountPercentage"
+                      externalMetadataColumnId="Package\Data Flow Task\Product Destination.Inputs[OLE DB Destination Input].ExternalColumns[discountPercentage]"
+                      lineageId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].Columns[discountPercentage]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Product Destination.Inputs[OLE DB Destination Input].Columns[stock]"
+                      cachedDataType="i8"
+                      cachedName="stock"
+                      externalMetadataColumnId="Package\Data Flow Task\Product Destination.Inputs[OLE DB Destination Input].ExternalColumns[stock]"
+                      lineageId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].Columns[stock]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Product Destination.Inputs[OLE DB Destination Input].Columns[brand]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="104"
+                      cachedName="brand"
+                      externalMetadataColumnId="Package\Data Flow Task\Product Destination.Inputs[OLE DB Destination Input].ExternalColumns[brand]"
+                      lineageId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].Columns[brand]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Product Destination.Inputs[OLE DB Destination Input].Columns[category]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="60"
+                      cachedName="category"
+                      externalMetadataColumnId="Package\Data Flow Task\Product Destination.Inputs[OLE DB Destination Input].ExternalColumns[category]"
+                      lineageId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].Columns[category]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Product Destination.Inputs[OLE DB Destination Input].Columns[rating]"
+                      cachedDataType="r8"
+                      cachedName="rating"
+                      externalMetadataColumnId="Package\Data Flow Task\Product Destination.Inputs[OLE DB Destination Input].ExternalColumns[rating]"
+                      lineageId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].Columns[rating]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Product Destination.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      dataType="i8"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Product Destination.Inputs[OLE DB Destination Input].ExternalColumns[title]"
+                      codePage="1252"
+                      dataType="str"
+                      length="152"
+                      name="title" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Product Destination.Inputs[OLE DB Destination Input].ExternalColumns[price]"
+                      dataType="i8"
+                      name="price" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Product Destination.Inputs[OLE DB Destination Input].ExternalColumns[discountPercentage]"
+                      dataType="r8"
+                      name="discountPercentage" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Product Destination.Inputs[OLE DB Destination Input].ExternalColumns[stock]"
+                      dataType="i8"
+                      name="stock" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Product Destination.Inputs[OLE DB Destination Input].ExternalColumns[brand]"
+                      codePage="1252"
+                      dataType="str"
+                      length="104"
+                      name="brand" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Product Destination.Inputs[OLE DB Destination Input].ExternalColumns[category]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="category" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Product Destination.Inputs[OLE DB Destination Input].ExternalColumns[rating]"
+                      dataType="r8"
+                      name="rating" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Product Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\Product Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Product Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Product Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Product Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Product Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Product JSON Source (REST API or File)"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="JSON Source (REST API or File); ZappySys LLC (c) All Rights Reserved; SSIS PowerPack; http://www.zappysys.com/support"
+              description="The JSON source is used to read data from JSON files, RESTful Web Service or direct JSON String."
+              name="Product JSON Source (REST API or File)"
+              usesDispositions="true"
+              version="36">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="LoggingMode determines how much information is logged during Package Execution. Set Logging mode to Debugging for maximum log."
+                  expressionType="Notify"
+                  name="LoggingMode"
+                  typeConverter="ZappySys.PowerPack.Common.LoggingMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="When you enable this property it will prefix timestamp before Log messages."
+                  expressionType="Notify"
+                  name="PrefixTimestamp">false</property>
+                <property
+                  dataType="System.Null"
+                  expressionType="Notify"
+                  name="SelfRef"
+                  typeConverter="NOTBROWSABLE" />
+                <property
+                  dataType="System.Boolean"
+                  description="Treat empty string as NULL for any numeric data types"
+                  expressionType="Notify"
+                  name="TreatBlankNumberAsNull">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Treat empty string as NULL for bool data types"
+                  expressionType="Notify"
+                  name="TreatBlankBoolAsNull">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Treat empty string as NULL for any date/time data types"
+                  expressionType="Notify"
+                  name="TreatBlankDateAsNull">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Encoding of source file"
+                  expressionType="Notify"
+                  name="Encoding"
+                  typeConverter="ZappySys.Common.EncodingType">0</property>
+                <property
+                  dataType="System.String"
+                  description="Character set for text (e.g. windows-1250 )"
+                  expressionType="Notify"
+                  name="CharacterSet"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum JSON records to fetch. Set this value to 0 for all records"
+                  expressionType="Notify"
+                  name="MaxRows">25</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Enables custom search / replace in the document text after its read from the file/url or direct string. This replace operation happens before its parsed. This option can be useful for custom escape sequence in source document which is causing issue in the parser. You can replace such unwanted characters fore parser starts parsing the text."
+                  expressionType="Notify"
+                  name="EnableCustomReplace">false</property>
+                <property
+                  dataType="System.String"
+                  description="String you like to search for (Only valid when EnableCustomReplace option is turned on). If you want to enable Regular Expression pattern search then add --regex or --regex-ic (for case-insensitive search)  at the end of your search string (e.g. ORDER-\d+--regex OR ORDER-\d+--regex-ic (case-insensitive search) ) "
+                  expressionType="Notify"
+                  name="SearchFor"></property>
+                <property
+                  dataType="System.String"
+                  description="String you like to replace with (Only valid when EnableCustomReplace option is turned on). If you added --regex or --regex-ic at the end of your SearchFor string then ReplaceWith can use special placeholders (i.e. $1, $2...) based on regular expression groups. For example you SearchFor=(\w+)(@\w+.com) to search for emails then to mask emails you can something like this for ReplaceWith = ****$2 (where $2 is domain part and $1 is before @)"
+                  expressionType="Notify"
+                  name="ReplaceWith"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Defines how to read the JSON file or direct string"
+                  expressionType="Notify"
+                  name="AccessMode"
+                  typeConverter="ZappySys.Common.Ssis.FileValueAccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Defines how to read the JSON file or direct string or command line output. If you like to read from command line then simply prefix any valid command line with cmd:&gt;. Here is more information about streaming data from command line output. Syntax: cmd:&gt;[exe / bat folder]&lt;exe-name&gt; [arguments]&#xA;First argument is exe name or full path for exe or bat file. Second part is arguments for command line program. You can use double quotes around exe / batch file path if it contains space.&#xA;For *.bat or *.cmd file make sure to add [ @echo off ] in the first line (without brackets) else command itself is added in output. To read more please see product help file&#xA;&#xA;====================&#xA;Examples:&#xA;====================&#xA;cmd:&gt;cmd /c dir *.dll /b&#xA;cmd:&gt;aws iam list-users --output json&#xA;cmd:&gt;az vm list --output json&#xA;cmd:&gt;py c:\scripts\run-python.py&#xA;cmd:&gt;powershell -executionpolicy bypass -File &quot;c:\scrips\run.ps1&quot;&#xA;cmd:&gt;powershell -executionpolicy bypass -Command &quot;[System.IO.StreamReader]::new((Invoke-WebRequest -URI https://zappysys.com/downloads/files/test/invoices.json).RawContentStream).ReadToEnd()&quot;&#xA;cmd:&gt;c:\folder\my-batch-file.bat&#xA;cmd:&gt;c:\folder\my-batch-file.bat option1 option2&#xA;cmd:&gt;curl -k https://httpbin.org/get&#xA;cmd:&gt;curl.exe -k https://httpbin.org/get&#xA;cmd:&gt;c:\folder\curl.exe -k https://httpbin.org/get&#xA;cmd:&gt;&quot;c:\folder with space\curl.exe&quot; -k https://httpbin.org/get&#xA;"
+                  expressionType="Notify"
+                  name="DirectValue"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable name which holds JSON string"
+                  expressionType="Notify"
+                  name="ValueVariable"
+                  typeConverter="ZappySys.PowerPack.Converters.VariableEditor,ZappySys.PowerPack160.UI,Version=1.0.0.0,Culture=neutral,PublicKeyToken=1903265a93eae502"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable name which holds data file path or url"
+                  expressionType="Notify"
+                  name="PathVariable"
+                  typeConverter="ZappySys.PowerPack.Converters.VariableEditor,ZappySys.PowerPack160.UI,Version=1.0.0.0,Culture=neutral,PublicKeyToken=1903265a93eae502"></property>
+                <property
+                  dataType="System.String"
+                  description="JSON file path (e.g. c:\data\myfile.json) or pattern to process multiple files (e.g. c:\data\*.json)"
+                  expressionType="Notify"
+                  name="DirectPath"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">https://dummyjson.com/products/</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Include files from sub folders too."
+                  expressionType="Notify"
+                  name="Recursive">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Enable this option to treat DirectPath as list of paths / urls (separated by new line or double colon :: ). This option is very useful if you have many URLs / Paths with similar data structure and you want to return response from all URLs in one step (UNION all URLs with single dataset). Examples:  http://someurl1::http://someurl2 --OR-- c:\file1::c:\file2 --OR-- c:\file1::https://someurl"
+                  expressionType="Notify"
+                  name="EnableMultiPathMode">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="By default process stops with error if specified local file is not found. Set this property to true if you wish to continue rather than throwing file not found error."
+                  expressionType="Notify"
+                  name="ContinueOnFileNotFoundError">false</property>
+                <property
+                  dataType="System.String"
+                  description="Set this if you want to set custom Http headers. You may use variable anywhere in the header value using syntax {{User::YourVarName}}. Syntax of Header key value pair is : &amp;lt;request&amp;gt;&amp;lt;header&amp;gt;&amp;lt;name&amp;gt;x-myheader-1&amp;lt;/name&amp;gt;&amp;lt;value&amp;gt;AAA&amp;lt;/value&amp;gt;&amp;lt;/header&amp;gt; &amp;lt;header&amp;gt;&amp;lt;name&amp;gt;x-myheader-2&amp;lt;/name&amp;gt;&amp;lt;value&amp;gt;BBB&amp;lt;/value&amp;gt;&amp;lt;/header&amp;gt;&amp;lt;/request&amp;gt;"
+                  expressionType="Notify"
+                  name="HttpHeaders">&lt;request&gt;&lt;header&gt;&lt;name&gt;Accept&lt;/name&gt;&lt;value&gt;*/*&lt;/value&gt;&lt;/header&gt;&lt;header&gt;&lt;name&gt;Cache-Control&lt;/name&gt;&lt;value&gt;no-cache&lt;/value&gt;&lt;/header&gt;&lt;/request&gt;</property>
+                <property
+                  dataType="System.String"
+                  description="User defined data you wish to send along with your HTTP Request (e.g. Upload file data, Form POST data). Usually you have to set content-type of your data but if you select RequestMethod=POST then system will automatically set content-type=application/x-www-form-urlencoded."
+                  expressionType="Notify"
+                  name="HttpRequestData"></property>
+                <property
+                  dataType="System.String"
+                  description="Http Web Request Method (e.g. POST, GET, PUT, LIST, DELETE...). Refer your API documentation if you are not sure which method you have to use."
+                  expressionType="Notify"
+                  name="HttpRequestMethod">GET</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies content type for data you wish to POST. If you select Default option then system default content type will be used (i.e. application/x-www-form-urlencoded). If you specify Content-Type header along with this option then header value takes precedence."
+                  expressionType="Notify"
+                  name="HttpRequestContentType"
+                  typeConverter="ZappySys.Common.Web.HttpRequestContentType">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Check this option if you want to upload file(s) (i.e. POST RAW file data) or send data using Multi-Part encoding method (i.e. Content-Type: multipart/form-data). Multi-Part request allows you to mix key/value and upload files in same request. On the other hand raw upload allows only single file upload (without any key/value) &#xA;&#xA;==== Raw Upload (Content-Type: application/octet-stream) =====   &#xA;To upload single file in raw mode check this option and specify full file path starting with @ sign in the Body (e.g.  @c:\data\myfile.zip ) &#xA;&#xA;==== Form-Data / Multipart Upload (Content-Type: multipart/form-data) =====   &#xA;To treat your Request data as multi part fields you must specify key/value pairs separated by new lines into RequestData field (i.e. Body). Each key value pair is entered on new-line and key/value are separated using equal sign (=). Preceding and trailing spaces are ignored also blank lines are ignored. &#xA;If field value has some any special character(s) then use escape sequence (e.g. For NewLine: \r\n, For Tab: \t, For at (@): \@). When value of any field starts with at sign (@) its automatically treated as File you want to upload. By default file content type is determined based on extension however you can supply content type manually for any field using this way [ YourFileFieldName.Content-Type=some-content-type ]. By default File Upload Field always includes Content-Type in the request (non file fields do not have content-type by default unless you supply manually). For some reason if you dont want to use Content-Type header in your request then supply blank Content-Type to exclude this header altogather [e.g. SomeFieldName.Content-Type= ]. In below example we have supplied Content-Type for file2 and SomeField1, all other fields are using default content-type.&#xA;See below Example of uploading multiple files along with additional fields.&#xA;&#xA;file1=@c:\data\Myfile1.txt&#xA;file2=@c:\data\Myfile2.json&#xA;file2.Content-Type=application/json&#xA;SomeField1=aaaaaaa&#xA;SomeField1.Content-Type=text/plain&#xA;SomeField2=12345&#xA;SomeFieldWithNewLineAndTab=This is line1\r\nThis is line2\r\nThis is \ttab \ttab \ttab&#xA;SomeFieldStartingWithAtSign=\@MyTwitterHandle&#xA;"
+                  expressionType="Notify"
+                  name="IsMultiPartUpload">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Data format coming from HTTP Response. This is useful for example when you have OData service and you want to automatically consume all pages of data using odata.netUrl. Setting JsonFormat=Odata will automatically do it for you. This setting is only applicable if JSON is coming from HTTP WebRequest."
+                  expressionType="Notify"
+                  name="JsonFormat"
+                  typeConverter="ZappySys.Json.JsonFormat">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Enable custom proxy settings (If this is not set then system default proxy will be used. To disable proxy totally uncheck this option and check DoNotUseDefaultProxy option if available)"
+                  expressionType="Notify"
+                  name="UseProxy">false</property>
+                <property
+                  dataType="System.String"
+                  description="Web URL of Proxy server (including port  if necessary). [e.g. http://myproxyserver:8080/]"
+                  expressionType="Notify"
+                  name="ProxyUrl"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Enable passing userid and password to proxy server"
+                  expressionType="Notify"
+                  name="UseProxyCreds">false</property>
+                <property
+                  dataType="System.String"
+                  description="Proxy username"
+                  expressionType="Notify"
+                  name="ProxyUserName"></property>
+                <property
+                  dataType="System.String"
+                  description="Proxy password"
+                  expressionType="Notify"
+                  name="ProxyPassword"></property>
+                <property
+                  dataType="System.String"
+                  description="If Service response support pagination using some sort of next url attribute then specify which attribute name in JSON Response string which holds next url. If no attribute found or its null then component will stop fetching next resultset. Example: $.pagingInfo.nextUrl"
+                  expressionType="Notify"
+                  name="NextUrlAttribute"></property>
+                <property
+                  dataType="System.String"
+                  description="If Service response support pagination using some sort of prev/next url attribute then specify which previous link attribute name from JSON Response string which holds previous url."
+                  expressionType="Notify"
+                  name="PrevUrlAttribute"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies value for NextUrlAttribute or StopIndicatorAttribute which indicates last page to stop pagination. If you have specified StopIndicatorAttribute then you can use Regular expression rather than static value to indicate last page. To use regular expression value of this property must start with regex= prefix. Example : regex=FALSE|N or use regex= to detect blank value or missing value (assuming you set StopIndicatorAttribute to something like $.hasMore)"
+                  expressionType="Notify"
+                  name="NextUrlStopIndicator"></property>
+                <property
+                  dataType="System.String"
+                  description="Attribute name or expression for attribute which can be used as stop indicator (e.g. $.hasMore --OR-- $.pagination.hasMore --OR-- $.data[0].hasMore). If this value is blank then NextUrlAttribute is used"
+                  expressionType="Notify"
+                  name="StopIndicatorAttribute"></property>
+                <property
+                  dataType="System.String"
+                  description="If you want to include certain text (or parameters) at the end of Next url then specify this attribute (e.g. &amp;format=json). Another common use case of this property is to supply pagination token to next Page URL. You can also use &lt;%nextlink%&gt; or  &lt;%nextlink_encoded%&gt; placeholder (e.g. &amp;cursor=&lt;%nextlink_encoded%&gt; )"
+                  expressionType="Notify"
+                  name="NextUrlSuffix"></property>
+                <property
+                  dataType="System.Int32"
+                  description="This property indicates total number of milliseconds you want to wait before sending next request. This option allows you to adjust how many API calls can be made within certain timeframe. If your API Service has no limit then set this option to zero"
+                  expressionType="Notify"
+                  name="NextUrlWait">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="If this option is true then component will continue without exception on 404 error (Url not found). This allows you to consume data gracefully."
+                  expressionType="Notify"
+                  name="ContinueOnUrlNotFoundError">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Continue when any type of exception occurs during http request"
+                  expressionType="Notify"
+                  name="ContineOnAnyError">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Continue on error when specified substring found in response"
+                  expressionType="Notify"
+                  name="ContineOnErrorForMessage">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Continue on error when specified status code returned from web server"
+                  expressionType="Notify"
+                  name="ContineOnErrorForStatusCode">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="When error occurs no data is returned. Use this option to get content eventhough error occurs. When this option is checked you can't use [continue on error when specific string found in response] option"
+                  expressionType="Notify"
+                  name="ConsumeResponseOnError">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Status code to match when error occurs and ContineOnErrorForStatusCode option is true. If Response status code matches to this code then task continues to run"
+                  expressionType="Notify"
+                  name="ErrorStatusCodeToMatch">404</property>
+                <property
+                  dataType="System.String"
+                  description="Error substring to match when error occurs and ContineOnErrorForMessage option is true. If Response status code matches to this code then task continues to run"
+                  expressionType="Notify"
+                  name="ErrorSubstringToMatch"></property>
+                <property
+                  dataType="System.String"
+                  description="Cookie Container can be used to maintain state between multiple web requests. Example: You can login to site like wordpress and then extract any private page content by simply passing authentication cookies using this variable."
+                  expressionType="Notify"
+                  name="CookieContainerVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Http request Timeout in seconds. Set this to 0 if you want to use system default value (i.e. 100 seconds)"
+                  expressionType="Notify"
+                  name="RequestTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies which security protocol is supported for HTTPS communication. Using this option you can enable legacy protocol or enforce to use latest version of security protocol (Note: TLS 1.2 is only supported in SSIS 2014 or Higher)."
+                  expressionType="Notify"
+                  name="SecurityProtocol"
+                  typeConverter="ZappySys.PowerPack.Common.HttpsSecurityProtocolType">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Enable support for gzip or deflate compression (for deflate you must turn on [Tls 1.0 Or Higher] Option on Advanced Settings - Security Protocol for HTTPS). When you check this option compressed response automatically de-compressed saving bandwidth. This option is only valid if web server supports compressed response stream. Check your API documentation for more information."
+                  expressionType="Notify"
+                  name="EnableCompressionSupport">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Ignore SSL certificate related errors. Example: if you getting SSL/TLS errors because of certificate expired or certificate is not from trusted authority or certificate is self-signed. By checking this option you will not get SSL/TLS error."
+                  expressionType="Notify"
+                  name="IgnoreCertificateErrors">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Allow unsecure ciphers/suites and curves for SSLS/TLS communication. Use this option to communicate with web servers which needs legacy / unsecured ciphers support. This option is only trigged when you change default SSL/TLS Version on advanced settings tab."
+                  expressionType="Notify"
+                  name="AllowUnsecureSuite">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Use connection to pass credentials for authentication (e.g. Use UserID/Password or Use OAuth Protocol for token based approach)"
+                  expressionType="Notify"
+                  name="UseConnection">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specified how you want to loop through multiple pages returned by REST API."
+                  expressionType="Notify"
+                  name="PagingMode"
+                  typeConverter="ZappySys.Common.RestApiPagingMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="If you wish to pass extracted pagination token or current page number in the body of next request then set this option to true. You can use [$pagetoken$] and [$pagenumber$] placeholders anywhere in the Body where you wish to insert extracted Page token. If you must set encoded token then you can use &lt;%nextlink_encoded%&gt; inside SuffixForNextUrl Property. If you dont use SuffixForNextUrl then raw nextLink or Token will be inserted inside the body. If you dont specify [$pagetoken$] placeholder in the body then NextPage Token will be appended at the end. NextPage Token is extracted by filter expression specified using property NextUrlSuffix"
+                  expressionType="Notify"
+                  name="EnablePageTokenForBody">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Set this to true if you wish to specify different URL, Header, Body or Filter for first page and next page (i.e. Paginated response). Some APIs like Amazon MWS, NetSuite, Zuora) you may need to set this to true."
+                  expressionType="Notify"
+                  name="HasDifferentNextPageInfo">false</property>
+                <property
+                  dataType="System.String"
+                  description="When HasDifferentNextPageInfo=true you can set this property to indicate first page and next page. You can specify different URL, Header, Body or Filter for first page and next page (i.e. Paginated response). Use [$tag$] as placeholder anywhere in the URL, Header, Body or Filter and at runtime system will replace it with correct value (first page or next page value). Syntax to specify placeholder for first page vs next page is like a connectionstring url=FirstPageValue|NextPageValue;header=FirstPageValue|NextPageValue;body=FirstPageValue|NextPageValue;filter=FirstPageValue|NextPageValue;method=FirstPageValue|NextPageValue; You can use one or more key/value pairs to make things dynamic (e.g. url, header, body, filter or method)  .For example if you have pagination in your API and First URL is http://abc.com/api/items/get and to get more records you have to call http://abc.com/api/items/getNext then you can use [$tag$] as placeholder in the URL http://abc.com/api/items/[$tag$] and specify this property with first page tag and next page tag as url=get|getNext  (Tags are separated using vertical bar). "
+                  expressionType="Notify"
+                  name="PagePlaceholders"></property>
+                <property
+                  dataType="System.String"
+                  description="Use this property to set request body fragment for first page. HasDifferentNextPageInfo must be set to true to use this property."
+                  expressionType="Notify"
+                  name="FirstPageBodyPart"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="Use this property to set request body fragment for any request after first request. HasDifferentNextPageInfo must be set to true to use this property."
+                  expressionType="Notify"
+                  name="NextPageBodyPart"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="Expression to extract Maximum pages to loop through. Some APIs don't stop pagination and keep returning last page data when you try to read data after last page. Specify expression (e.g. $.page_count ) to read total pages to loop through using this property."
+                  expressionType="Notify"
+                  name="PagingMaxPagesExpr"></property>
+                <property
+                  dataType="System.String"
+                  description="Expression to extract Maximum records to loop through. Some APIs don't stop pagination and keep returning last page data when you try to read data after last page. Specify expression (e.g. $.total_rows ) to read total pages to loop through using this property. This setting is ignored if you set PagingMaxPagesExpr."
+                  expressionType="Notify"
+                  name="PagingMaxRowsExpr"></property>
+                <property
+                  dataType="System.String"
+                  description="When you enable PagingMaxRowsExpr (end pagination based on MaxRowCount) then you need to count records coming in each response. This expression extract all rows found under specified expression (e.g. $.orders[*] if all records found under orders node)."
+                  expressionType="Notify"
+                  name="PagingMaxRowsDataPathExpr"></property>
+                <property
+                  dataType="System.String"
+                  description="e.g. Type page_num if URL looks like this =&gt; http://abc.com/?page_num=1&amp;sort=true  (page number via query string)&#xA;--or-- Type &lt;%page%&gt; if page number is inside URL path like this =&gt; http://abc.com/1/?sort=true  (e.g. replace page number in url with placeholder http://abc.com/&lt;%page%&gt;/?sort=true)&#xA;Page number will be incremented by one for next URL until last page is reached or [Max Page Number] is reached. This parameter also controls pagination mode [ByResponseHeaderContinuationToken]. When this mode is used you can enter RESPONSE_HEADER_NAME --OR-- NEXT_QUERY_PARAM=RESPONSE_HEADER_NAME --OR-- NEXT_QUERY_PARAM=RESPONSE_HEADER_NAME(regular_expression). If NEXT_QUERY_PARAM (left side) is omitted then Response Header value is sent to next request in the same Header name. If you like to pass response header value in the next URL then use two parts (e.g. cursor=X-CONTINUE-TOKEN) ... this example will read X-CONTINUE-TOKEN header from response and pass it to next request in the URL like http://myapi.com/?cursor=[value-from-previous-response]. You can also use advanced syntax using Regular expression to extract substring from response header value (e.g. cursor=X-CONTINUE-TOKEN(\d*)) will extract only numeric part from header value. Another example is cursor=X-CONTINUE-TOKEN(^((?!null\b).)*$) ... this will return value if its other than &quot;null&quot; (word). For more information about using regular expression check this link https://zappysys.com/links/?id=10124"
+                  expressionType="Notify"
+                  name="PageNumberAttributeNameInUrl"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum page number until which auto increment is allowed. Type zero for no limit. Next URL contains next page number (increment by one) until last page is detected or [Max Page Number] limit is reached."
+                  expressionType="Notify"
+                  name="MaxPageNumber">0</property>
+                <property
+                  dataType="System.String"
+                  description="Rules to end pagination. You can use XML markup to include multiple rules. Here is an example of XML with multiple rules. This will stop pagination if any of these rule matches (Status Code, Size, Error Message)  &lt;ArrayOfPagingEndRule&gt;&lt;PagingEndRule&gt;&lt;Mode&gt;DetectBasedOnResponseStatusCode&lt;/Mode&gt;&lt;StatusCode&gt;401&lt;/StatusCode&gt;&lt;/PagingEndRule&gt;&lt;PagingEndRule&gt;&lt;Mode&gt;DetectBasedOnRecordCount&lt;/Mode&gt;&lt;/PagingEndRule&gt;&lt;PagingEndRule&gt;&lt;Mode&gt;DetectBasedOnResponseSize&lt;/Mode&gt;&lt;MinBytes&gt;3&lt;/MinBytes&gt;&lt;MaxBytes&gt;200&lt;/MaxBytes&gt;&lt;/PagingEndRule&gt;&lt;PagingEndRule&gt;&lt;Mode&gt;DetectBasedOnResponseErrorMessage&lt;/Mode&gt;&lt;ErrString&gt;key not found&lt;/ErrString&gt;&lt;/PagingEndRule&gt;&lt;/ArrayOfPagingEndRule&gt;"
+                  expressionType="Notify"
+                  name="PagingEndRules"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable name which will hold starting page number. This is ignored if you using parameter name from query string to indicate page number."
+                  expressionType="Notify"
+                  name="StartPageNumberVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Page counter increment. By default next page is incremented by one if this value is zero. You can also enter negative number if you want to decrease page counter."
+                  expressionType="Notify"
+                  name="PageNumberIncrement">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specified how you want detect last page."
+                  expressionType="Notify"
+                  name="PagingEndStrategy"
+                  typeConverter="ZappySys.Common.UrlPagingEndDetectionStrategy">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Condition result to compare to detect last page. Set this property to True if you want detect last page if condition is true else set this to False."
+                  expressionType="Notify"
+                  name="LastPageWhenConditionEqualsTo">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Minimum bytes expected from response."
+                  expressionType="Notify"
+                  name="ResponseMinBytes">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum bytes from response."
+                  expressionType="Notify"
+                  name="ResponseMaxBytes">3</property>
+                <property
+                  dataType="System.String"
+                  description="Expected error message sub string from response."
+                  expressionType="Notify"
+                  name="ResponseErrorString">not found</property>
+                <property
+                  dataType="System.Int32"
+                  description="Expected status code from response when page number you trying to access not found."
+                  expressionType="Notify"
+                  name="ResponseStatusCode">404</property>
+                <property
+                  dataType="System.String"
+                  description="Enter expression here to filter data.(Example:  $.Users[*].UserName ) This will fetch User names from users records"
+                  expressionType="Notify"
+                  name="Filter"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">$.products[*]</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Use this option to include parent properties (Non array) in the output along with Filtered Rows"
+                  expressionType="Notify"
+                  name="IncludeParentColumns">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="By default child and parent information is not included in the output if children not found for specified expression. For example if you want to extract all orders from all customers nodes then you can type $.Customers[*].Orders[*]. This will fetch all orders from all customers. By default customers records without orders wont be included in the output. If you want to include those customers where orders not found then check this option (Output null information for order attributes). This behavior is similar to LEFT OUTER JOIN in SQL (Left side is parent, right side is child). This option is ***resource intensive*** so only check if you really care about this behavior."
+                  expressionType="Notify"
+                  name="IncludeParentColumnsWhenChildMissing">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Set this option to true if you want to output parent columns which are array. By default any parent column which is an array is not included in output. See also FilterForParentColumnsWithArrayType property if you set this property"
+                  expressionType="Notify"
+                  name="IncludeParentColumnsWithArrayType">false</property>
+                <property
+                  dataType="System.String"
+                  description="Filter expression to extract value form parent"
+                  expressionType="Notify"
+                  name="FilterForParentColumnsWithArrayType"></property>
+                <property
+                  dataType="System.String"
+                  description="Prefix for parent column name. This option is only valid if you have set IncludeParentColumns=True"
+                  expressionType="Notify"
+                  name="ParentColumnPrefix">P_</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Throw error if property name specified in filter expression is missing. By default it will ignore any missing property errors."
+                  expressionType="Notify"
+                  name="ThrowErrorIfPropertyMissing">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="This property how many nested levels should be scanned to fetch various properties. 0=Scan all child levels."
+                  expressionType="Notify"
+                  name="MaxLevelsToScan">0</property>
+                <property
+                  dataType="System.String"
+                  description="List comma separated property names from JSON document which you want to exclude from output. Specify parent property name to exclude all child nodes."
+                  expressionType="Notify"
+                  name="ExcludedProperties"></property>
+                <property
+                  dataType="System.String"
+                  description="Property level separator used in generated property name (separator for outer properties - Above selected filter node). Use this if default separator is producing duplicate property name which is conflicting with existing name."
+                  expressionType="Notify"
+                  name="LevelSeparator">_</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Enables deep array flattening for selected filtered hierarchy. When you turn on this property it will flatten each property of each array item and expose as column (e.g. If you have Filter set as $.customers[*] and for each customer you have an array of Addresses then you may see output columns like Addresses.1.City, Addresses.1.State, Addresses.2.City, Addresses.2.State .... Addresses.N.City, Addresses.N.State). You can control how many array items you want to flatten by setting MaxArrayItemsToFlatten property."
+                  expressionType="Notify"
+                  name="EnableArrayFlattening">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum number of array items to flatten. inner array flattening. Adjust this property to control how many columns being generated. This option is ignored if you set EnableArrayFlattening=false"
+                  expressionType="Notify"
+                  name="MaxArrayItemsToFlatten">10</property>
+                <property
+                  dataType="System.Int32"
+                  description="Compression format for source file (e.g. gzip, zip)"
+                  expressionType="Notify"
+                  name="FileCompressionType"
+                  typeConverter="ZappySys.Common.FileCompressionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Array Transformation you want to apply. Useful for case when you have 2-Dimensional arrays with rows/columns in separate arrays."
+                  expressionType="Notify"
+                  name="ArrayTransformationType"
+                  typeConverter="ZappySys.Json.ArrayTransformType">0</property>
+                <property
+                  dataType="System.String"
+                  description="Filter expression to use to extract column names for array transformation."
+                  expressionType="Notify"
+                  name="ArrayTransColumnNameFilter"></property>
+                <property
+                  dataType="System.String"
+                  description="Filter expression for row values (Not applicable for simple array transformation)."
+                  expressionType="Notify"
+                  name="ArrayTransRowValueFilter"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="When you have 2D array but don't have column list specified in a separate array then use this option (e.g. { arr: [[10,11],[21,22]] } ). If you selected Column less array or JSON Lines option then this property means Column Names coming from First Line of array."
+                  expressionType="Notify"
+                  name="ArrayTransEnableCustomColumns">false</property>
+                <property
+                  dataType="System.String"
+                  description="When you have 2D array but don't have column list specified in a separate array then use specify column names here. Use comma separated list (e.g col1,col2,col3 ). Column name Order must match value order."
+                  expressionType="Notify"
+                  name="ArrayTransCustomColumns"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Enable Raw Document Output Mode with unstructured data processing option for any format (i.e. XML, Html, Text, Json). Unlike other option EnableRawOutputMode, this option doesn't invoke parser to extract documents by finding row terminator. It will source string as row value in single row/ single column. You can also define RawOutputDataTemplate along with this property (e.g. Template can be {data: [$1] } ). This will wrap response inside template string before sending to parser."
+                  expressionType="Notify"
+                  name="EnableRawOutputModeSingleRow">false</property>
+                <property
+                  dataType="System.String"
+                  description="When you enable EnableRawOutputModeSingleRow you can use this property. Template must be in JSON format (e.g. { data: [$1] } ). [$1] means content extracted using first expression or no expression (i.e. raw data). If RawOutputFilterExpr contains multiple expressions (separated by || ) then you can use multiple placeholders (i.e. [$1], [$2]...[$N]). RawOutputFilterExpr can have JsonPath, XmlPath, RegEx (set RawOutputExtractMode)."
+                  expressionType="Notify"
+                  name="RawOutputDataRowTemplate"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies how custom date formatted strings are parsed when reading JSON."
+                  expressionType="Notify"
+                  name="DateFormatString"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how date formatted strings, e.g. Date(1198908717056) and 2012-03-21T05:40Z, are parsed when reading JSON."
+                  expressionType="Notify"
+                  name="DateParseHandling"
+                  typeConverter="ZappySys.Common.DateParseHandling">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how decimal values are parsed when reading JSON. Change this setting to Decimal if you like to have large precision / scale."
+                  expressionType="Notify"
+                  name="FloatParseHandling"
+                  typeConverter="ZappySys.Common.FloatParseHandling">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indent JSON output so its easy to read."
+                  expressionType="Notify"
+                  name="IndentOutput">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Output as raw JSON document rather than parsing individual fields. This option is helpful if you have documents stored in a file and you want to pass them downstream as raw JSON string rather than parsing into columns."
+                  expressionType="Notify"
+                  name="OutputRawDocument">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="When you redirect error to error output by default you get additional information in ErrorMessage column. Check this option if you need exact Response Body (Useful if its in JSON/XML format which needs to be parsed for additional information for later step)."
+                  expressionType="Notify"
+                  name="OnErrorOutputResponseBody">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Set this option to true if you want to output FilePath. This option is ignored when you consume DirectValue or data from Url rather than local files. Output column name will be __FilePath"
+                  expressionType="Notify"
+                  name="OutputFilePath">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Set this option to true if you want to output FileName. This option is ignored when you consume DirectValue or data from Url rather than local files. Output column name will be __FileName"
+                  expressionType="Notify"
+                  name="OutputFileName">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Set this option to true if you want to move processed file to archive folder."
+                  expressionType="Notify"
+                  name="EnableArchiveFile">false</property>
+                <property
+                  dataType="System.String"
+                  description="Folder path where you want to move processed file."
+                  expressionType="Notify"
+                  name="ArchiveFolderPath"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Folder path where you want to move processed file."
+                  expressionType="Notify"
+                  name="OverwriteFileInArchiveFolder">false</property>
+                <property
+                  dataType="System.String"
+                  description="File naming convention for archived file. By default it will use same name as original source file processed. But you can control naming format using {%name%} and {%ext%} placeholders. Examples: {%name%}_{%timestamp%}_processed{%ext%} or {%name%}{%ext%}.{{System::ContainerStartTime,yyyyMMdd_HHmmss_fff}}"
+                  expressionType="Notify"
+                  name="ArchiveFileNamingConvention"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="When this property is true then Column is converted to Row. Pivoted names will appear under  Pivot_Name column and values will appear under Pivot_Value field."
+                  expressionType="Notify"
+                  name="EnablePivot">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="When this option is checked, system allows to parse large number (Higher than Int64) in JSON document (i.e. { id: 76000009353950433247780 } ). If you do not turn on this option then it may throw error if large number is encountered. This option is SLOW because it has to perform additional checks in order to avoid Large number overflow error so do not turn on unless you getting Large number error."
+                  expressionType="Notify"
+                  name="EnableBigNumberHandling">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Metadata scan mode controls how data type and length is determined. By default few records scanned to determine datatype/length. Changing ScanMode affects length/datatype accuracy."
+                  expressionType="Notify"
+                  name="MetaDataScanMode"
+                  typeConverter="ZappySys.Common.Data.MetaDataScanMode">4</property>
+                <property
+                  dataType="System.Int32"
+                  description="Length for all string column. This option is only valid for MetaDataScanMode=Custom"
+                  expressionType="Notify"
+                  name="MetaDataCustomLength">1000</property>
+                <property
+                  dataType="System.Boolean"
+                  description="When this option is true, it detects all string values as DT_STR (Ascii) rather than DT_WSTR (Unicode)"
+                  expressionType="Notify"
+                  name="MetaDataTreatStringAsAscii">false</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">ZappySys.JsonSource</property>
+              </properties>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput]"
+                  errorOrTruncationOperation="Error"
+                  errorRowDisposition="FailComponent"
+                  name="JsonSourceOutput"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].Columns[P_total]"
+                      dataType="i8"
+                      externalMetadataColumnId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].ExternalColumns[P_total]"
+                      lineageId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].Columns[P_total]"
+                      name="P_total" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].Columns[P_skip]"
+                      dataType="i8"
+                      externalMetadataColumnId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].ExternalColumns[P_skip]"
+                      lineageId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].Columns[P_skip]"
+                      name="P_skip" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].Columns[P_limit]"
+                      dataType="i8"
+                      externalMetadataColumnId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].ExternalColumns[P_limit]"
+                      lineageId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].Columns[P_limit]"
+                      name="P_limit" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].Columns[id]"
+                      dataType="i8"
+                      externalMetadataColumnId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].ExternalColumns[id]"
+                      lineageId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].Columns[title]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].ExternalColumns[title]"
+                      length="152"
+                      lineageId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].Columns[title]"
+                      name="title" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].Columns[description]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].ExternalColumns[description]"
+                      length="624"
+                      lineageId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].Columns[description]"
+                      name="description" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].Columns[price]"
+                      dataType="i8"
+                      externalMetadataColumnId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].ExternalColumns[price]"
+                      lineageId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].Columns[price]"
+                      name="price" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].Columns[discountPercentage]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].ExternalColumns[discountPercentage]"
+                      lineageId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].Columns[discountPercentage]"
+                      name="discountPercentage" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].Columns[rating]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].ExternalColumns[rating]"
+                      lineageId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].Columns[rating]"
+                      name="rating" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].Columns[stock]"
+                      dataType="i8"
+                      externalMetadataColumnId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].ExternalColumns[stock]"
+                      lineageId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].Columns[stock]"
+                      name="stock" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].Columns[brand]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].ExternalColumns[brand]"
+                      length="104"
+                      lineageId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].Columns[brand]"
+                      name="brand" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].Columns[category]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].ExternalColumns[category]"
+                      length="60"
+                      lineageId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].Columns[category]"
+                      name="category" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].Columns[thumbnail]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].ExternalColumns[thumbnail]"
+                      length="220"
+                      lineageId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].Columns[thumbnail]"
+                      name="thumbnail" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].Columns[images]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].ExternalColumns[images]"
+                      length="1316"
+                      lineageId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].Columns[images]"
+                      name="images" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].Columns[__FileName]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].ExternalColumns[__FileName]"
+                      length="600"
+                      lineageId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].Columns[__FileName]"
+                      name="__FileName" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].ExternalColumns[P_total]"
+                      dataType="i8"
+                      name="P_total" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].ExternalColumns[P_skip]"
+                      dataType="i8"
+                      name="P_skip" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].ExternalColumns[P_limit]"
+                      dataType="i8"
+                      name="P_limit" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].ExternalColumns[id]"
+                      dataType="i8"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].ExternalColumns[title]"
+                      dataType="str"
+                      length="152"
+                      name="title" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].ExternalColumns[description]"
+                      dataType="str"
+                      length="624"
+                      name="description" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].ExternalColumns[price]"
+                      dataType="i8"
+                      name="price" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].ExternalColumns[discountPercentage]"
+                      dataType="r8"
+                      name="discountPercentage" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].ExternalColumns[rating]"
+                      dataType="r8"
+                      name="rating" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].ExternalColumns[stock]"
+                      dataType="i8"
+                      name="stock" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].ExternalColumns[brand]"
+                      dataType="str"
+                      length="104"
+                      name="brand" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].ExternalColumns[category]"
+                      dataType="str"
+                      length="60"
+                      name="category" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].ExternalColumns[thumbnail]"
+                      dataType="str"
+                      length="220"
+                      name="thumbnail" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].ExternalColumns[images]"
+                      dataType="str"
+                      length="1316"
+                      name="images" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput].ExternalColumns[__FileName]"
+                      dataType="str"
+                      length="600"
+                      name="__FileName" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSource Error Output]"
+                  isErrorOut="true"
+                  name="JsonSource Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSource Error Output].Columns[P_total]"
+                      dataType="i8"
+                      lineageId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSource Error Output].Columns[P_total]"
+                      name="P_total" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSource Error Output].Columns[P_skip]"
+                      dataType="i8"
+                      lineageId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSource Error Output].Columns[P_skip]"
+                      name="P_skip" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSource Error Output].Columns[P_limit]"
+                      dataType="i8"
+                      lineageId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSource Error Output].Columns[P_limit]"
+                      name="P_limit" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSource Error Output].Columns[id]"
+                      dataType="i8"
+                      lineageId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSource Error Output].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSource Error Output].Columns[title]"
+                      codePage="1252"
+                      dataType="str"
+                      length="152"
+                      lineageId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSource Error Output].Columns[title]"
+                      name="title" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSource Error Output].Columns[description]"
+                      codePage="1252"
+                      dataType="str"
+                      length="624"
+                      lineageId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSource Error Output].Columns[description]"
+                      name="description" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSource Error Output].Columns[price]"
+                      dataType="i8"
+                      lineageId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSource Error Output].Columns[price]"
+                      name="price" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSource Error Output].Columns[discountPercentage]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSource Error Output].Columns[discountPercentage]"
+                      name="discountPercentage" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSource Error Output].Columns[rating]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSource Error Output].Columns[rating]"
+                      name="rating" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSource Error Output].Columns[stock]"
+                      dataType="i8"
+                      lineageId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSource Error Output].Columns[stock]"
+                      name="stock" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSource Error Output].Columns[brand]"
+                      codePage="1252"
+                      dataType="str"
+                      length="104"
+                      lineageId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSource Error Output].Columns[brand]"
+                      name="brand" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSource Error Output].Columns[category]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      lineageId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSource Error Output].Columns[category]"
+                      name="category" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSource Error Output].Columns[thumbnail]"
+                      codePage="1252"
+                      dataType="str"
+                      length="220"
+                      lineageId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSource Error Output].Columns[thumbnail]"
+                      name="thumbnail" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSource Error Output].Columns[images]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1316"
+                      lineageId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSource Error Output].Columns[images]"
+                      name="images" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSource Error Output].Columns[__FileName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="600"
+                      lineageId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSource Error Output].Columns[__FileName]"
+                      name="__FileName" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSource Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSource Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSource Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSource Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSource Error Output].Columns[ErrorColumnName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="128"
+                      lineageId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSource Error Output].Columns[ErrorColumnName]"
+                      name="ErrorColumnName" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSource Error Output].Columns[ErrorMessage]"
+                      dataType="wstr"
+                      length="4000"
+                      lineageId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSource Error Output].Columns[ErrorMessage]"
+                      name="ErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[JsonSourceOutput]"
+              endId="Package\Data Flow Task\Product Destination.Inputs[OLE DB Destination Input]"
+              name="JsonSourceOutput"
+              startId="Package\Data Flow Task\Product JSON Source (REST API or File).Outputs[JsonSourceOutput]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Data Flow Task"
+          TopLeft="299.28571938252,71.1176480562217" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="266.4,41.6"
+          Id="Package\Data Flow Task\Product JSON Source (REST API or File)"
+          TopLeft="263.571433060023,37.470588760805" />
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Data Flow Task\Product Destination"
+          TopLeft="314.285719637968,220.235297206364" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[JsonSourceOutput]"
+          TopLeft="398.128576348996,79.070588760805">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,141.164708445559"
+              Start="0,0"
+              End="0,133.664708445559">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,133.664708445559" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Product Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
